@@ -1,2 +1,2 @@
 # OpenTelemetry-dotnet
-Proof of concept implementation of Open Telemetry in .Net Core 3.1+
+Proof of concept implementation of Open Telemetry in .Net Core 5.0
