@@ -29,16 +29,14 @@ namespace OTel.POC.Web
       services.AddOpenTelemetryTracing((builder) =>
           builder
             .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("OTel.POC.Web"))
-            .AddHttpClientInstrumentation()
-            .AddAspNetCoreInstrumentation(option=> { option.RecordException = true; })
-            .AddConsoleExporter()
-            .AddJaegerExporter(options =>
+            .AddAspNetCoreInstrumentation(option => { option.RecordException = true; })
+            .AddConsoleExporter().
+            AddJaegerExporter(options =>
             {
-              options.AgentHost = "localhost";
+              options.AgentHost = "jeager-all-in-one";
               options.AgentPort = 6831;
             })
-           
-          );
+          ); 
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,7 +49,7 @@ namespace OTel.POC.Web
         app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "OTel.POC.Web v1"));
       }
 
-      app.UseHttpsRedirection();
+      //app.UseHttpsRedirection();
 
       app.UseRouting();
 

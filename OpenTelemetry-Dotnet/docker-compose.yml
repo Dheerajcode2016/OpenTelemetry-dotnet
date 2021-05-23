@@ -8,7 +8,9 @@ services:
       dockerfile: OTel.POC.Web/Dockerfile
     networks:
       - otel-dotnet-poc
-
+    ports:
+      - "5000:80"
+      - "5001:443"
 
   rabbitmq:
     image: rabbitmq:3.8.16-management-alpine
@@ -130,6 +132,7 @@ services:
     depends_on: 
       - elasticsearch01
       - elasticsearch02
+      - kibana
     environment: 
       - SPAN_STORAGE_TYPE=elasticsearch
       - ES_SERVER_URLS=http://elasticsearch01:9200

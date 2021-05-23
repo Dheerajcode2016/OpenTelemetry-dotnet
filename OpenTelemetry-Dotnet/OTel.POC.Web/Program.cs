@@ -39,20 +39,20 @@ namespace OTel.POC.Web
             .ConfigureWebHostDefaults(webBuilder =>
             {
               webBuilder.UseStartup<Startup>();
-            })
-            .ConfigureLogging((context, builder) =>
-            {
-
-              builder.AddConsole();
-
-              builder.AddOpenTelemetry(options =>
-              {
-                options.IncludeScopes = true;
-                options.ParseStateValues = true;
-                options.IncludeFormattedMessage = true;
-
-                options.AddConsoleExporter();
-              });
             });
+            //.ConfigureLogging((context, builder) =>
+            //{
+
+            //  builder.AddConsole();
+
+            //  builder.AddOpenTelemetry(options =>
+            //  {
+            //    options.IncludeScopes = true;
+            //    options.ParseStateValues = true;
+            //    options.IncludeFormattedMessage = true;
+
+            //    options.AddConsoleExporter();
+            //  });
+            //});
   }
 }

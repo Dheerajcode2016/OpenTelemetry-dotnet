@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace OTel.POC.Web.Controllers
@@ -30,7 +31,8 @@ namespace OTel.POC.Web.Controllers
     {
       using (var activity = activitySource.StartActivity("ActivityName"))
       {
-
+        HttpClient client = new HttpClient();
+       HttpResponseMessage response =  client.GetAsync("http://jeager-all-in-one:16686").Result;
         var rng = new Random();
         return Enumerable.Range(1, 5).Select(index => new WeatherForecast
         {
